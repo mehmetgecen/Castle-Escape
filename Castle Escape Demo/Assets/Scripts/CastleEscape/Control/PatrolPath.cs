@@ -17,6 +17,7 @@ namespace CastleEscape.Control
                
                Gizmos.color = Color.cyan;
                Gizmos.DrawSphere(GetWaypoint(i), _gizmoSphereRadius);
+               Gizmos.DrawLine(GetWaypoint(i),GetWaypoint(j));
            }
        }
 
