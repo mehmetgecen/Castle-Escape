@@ -1490,6 +1490,11 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1655556314}
+    - target: {fileID: 6409576517233424976, guid: 71ca10eacdb5cef4eaace530fd9b71ad,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.58
+      objectReference: {fileID: 0}
     - target: {fileID: 8957083429406952469, guid: 71ca10eacdb5cef4eaace530fd9b71ad,
         type: 3}
       propertyPath: m_Controller
@@ -2684,11 +2689,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 1555692031}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Radius: 0.3
+  m_Speed: 8
+  m_Acceleration: 50
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 5000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -2747,7 +2752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ce973adf5b11948947839ce4f9e6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 8
 --- !u!136 &1555692042
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3349,6 +3354,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1177122488}
     m_Modifications:
+    - target: {fileID: 3966580386665265112, guid: 71ca10eacdb5cef4eaace530fd9b71ad,
+        type: 3}
+      propertyPath: attackDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5130127449706869026, guid: 71ca10eacdb5cef4eaace530fd9b71ad,
         type: 3}
       propertyPath: patrolPath

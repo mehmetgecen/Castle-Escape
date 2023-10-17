@@ -11,7 +11,7 @@ namespace CastleEscape.Combat
         [SerializeField] private float attackDistance;
         
         private Health _target; // will be edited
-        private float _distance;
+       
         private float _timeSinceLastAttack = Mathf.Infinity;
     
         private void Update()
@@ -26,11 +26,15 @@ namespace CastleEscape.Combat
                 if (!IsInRange())
                 {
                     GetComponent<Mover>().MoveTo(_target.transform.position); 
+                    
+                    print("moving towards player");
                 }
                 else
                 {
                     GetComponent<Mover>().Cancel();
                     AttackBehaviour();
+                    
+                    print("attacking player");
                 }
             }
         }
@@ -75,6 +79,8 @@ namespace CastleEscape.Combat
         // Animation Event called by Unity
         private void Hit()
         {
+            //find the target's health component
+            
             if (_target == null) return;
             {
                 // TODO edited after take damage method is edited 

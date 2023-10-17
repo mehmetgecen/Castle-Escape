@@ -16,18 +16,31 @@ namespace CastleEscape.Attributes
         //TODO - will be edited later, die/kill condition will be calculated based on the level of the attacker
         public void TakeDamage(GameObject instigator)
         {
-            if (GetComponent<Experience>().GetLevel() >= instigator.GetComponent<Experience>().GetLevel()) return;
-            
-            onDie.Invoke();
-            Die();
+            if (GetComponent<Experience>().GetLevel() >= instigator.GetComponent<Experience>().GetLevel())
+            {
+                instigator.GetComponent<Health>().Die();
+                
+                if (instigator.CompareTag("Player"))
+                {
+                    //GameOver(); 
+                }
+            }
+
+            else
+            {
+                onDie.Invoke();
+                Die();
+                
+                if (gameObject.CompareTag("Player"))
+                {
+                    //GameOver(); 
+                }
+            }
             
             //TODO Game Cycle after death
             // if player is dead, game restarts
             
-            if (gameObject.CompareTag("Player"))
-            {
-                //GameOver(); 
-            }
+            
 
         }
     
@@ -43,7 +56,8 @@ namespace CastleEscape.Attributes
             _isDead = true;
             GetComponent<Animator>().SetTrigger("Die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
-            
+            GetComponent<CapsuleCollider>().enabled = false;
+
         }
     }
 }

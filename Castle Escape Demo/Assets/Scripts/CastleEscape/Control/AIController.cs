@@ -84,6 +84,8 @@ namespace CastleEscape.Control
             GetComponent<NavMeshAgent>().speed = attackMovementSpeed;
             _fighter.Attack(_player);
             
+            print("Attack Behaviour Called from AIController.");
+            
         }
         
         private Vector3 GetCurrentWaypoint()
