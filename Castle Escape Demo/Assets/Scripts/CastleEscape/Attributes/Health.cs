@@ -1,4 +1,5 @@
 using CastleEscape.Core;
+using CastleEscape.Stats;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,12 +11,12 @@ namespace CastleEscape.Attributes
     
         private GameObject _instigator = null;
         private bool _isDead = false;
-        private int _level;
+        
         
         //TODO - will be edited later, die/kill condition will be calculated based on the level of the attacker
         public void TakeDamage(GameObject instigator)
         {
-            if (GetComponent<Health>()._level >= instigator.GetComponent<Health>()._level) return;
+            if (GetComponent<Experience>().GetLevel() >= instigator.GetComponent<Experience>().GetLevel()) return;
             
             onDie.Invoke();
             Die();
