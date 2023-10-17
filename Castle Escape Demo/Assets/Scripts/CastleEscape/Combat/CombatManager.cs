@@ -8,16 +8,19 @@ namespace CastleEscape.Combat
 {
     public class CombatManager : MonoBehaviour
     {
+        [SerializeField] private float combatDistance = 10f;
+       
         private Experience _playerExperience;
         private int _playerLevel;
         private float _detectionRadius = 5f;
-        private float combatDistance = 10f;
         
         GameObject _nearestEnemy;
+        Fighter _fighter;
         
 
         private void Awake()
         {
+            _fighter = gameObject.GetComponent<Fighter>();
             _playerExperience = gameObject.GetComponent<Experience>();
         }
 
@@ -42,8 +45,7 @@ namespace CastleEscape.Combat
             else
             {
                 if (!IsInFightZone()) return;
-                _nearestEnemy.GetComponent<AIController>().alertStage = AlertStage.Alerted;
-                    
+                _fighter.Attack(_nearestEnemy);
                 print("In fight zone");
             }
         }

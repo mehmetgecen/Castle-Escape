@@ -1,3 +1,4 @@
+using System;
 using CastleEscape.Attributes;
 using CastleEscape.Core;
 using UnityEngine;
@@ -23,7 +24,7 @@ namespace CastleEscape.Movement
         {
             _playerNavMesh.enabled = !_health.IsDead(); // will be edited after death check
             
-            UpdateAnimator();
+            //UpdateAnimator();
         }
         
         public void StartMoveAction(Vector3 destination)
@@ -46,6 +47,8 @@ namespace CastleEscape.Movement
         
         // Animation Velocity Equalized to NavMesh Velocity
         // InverseTransformDirection turns Worldspace (Global) Velocity to Local Velocity relative to NavMesh Agent.
+        
+        /*
         private void UpdateAnimator()
         {
             Vector3 characterVelocity = _playerNavMesh.velocity;
@@ -53,8 +56,11 @@ namespace CastleEscape.Movement
             float speed = localVelocity.z;
 
             _characterAnimator.SetFloat("ForwardSpeed", speed);
+            
 
         }
+        
+        */
         
     }
 }
