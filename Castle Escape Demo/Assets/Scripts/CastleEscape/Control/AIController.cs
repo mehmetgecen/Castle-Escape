@@ -3,9 +3,17 @@ using CastleEscape.Combat;
 using CastleEscape.Movement;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEditor;
 
 namespace CastleEscape.Control
 {
+    public enum AlertStage
+    {
+        Peaceful,
+        Suspicious,
+        Alerted
+    }
+    
     public class AIController : MonoBehaviour
     {
         [SerializeField] private float chaseDistance = 5f;
@@ -14,7 +22,13 @@ namespace CastleEscape.Control
         [SerializeField] private float patrolMovementSpeed = 2f;
         [SerializeField] private float attackMovementSpeed = 5f;
         [SerializeField] PatrolPath patrolPath;
-    
+        
+        public AlertStage alertStage;
+        public float fieldOfView;
+        [Range(0,360)] public float fieldOfViewAngle;
+        [Range(0,100)] public float alertLevel;
+        
+        
         private GameObject _player;
         private Mover _mover;
         private Fighter _fighter;
@@ -30,6 +44,10 @@ namespace CastleEscape.Control
             _player = GameObject.FindWithTag("Player");
             _mover = GetComponent<Mover>();
             _fighter = GetComponent<Fighter>();
+
+            alertStage = AlertStage.Peaceful;
+            alertLevel = 0;
+
         }
 
         private void Update()
@@ -81,6 +99,8 @@ namespace CastleEscape.Control
 
         private void AttackBehaviour()
         {
+            alertStage = AlertStage.Alerted;
+            
             GetComponent<NavMeshAgent>().speed = attackMovementSpeed;
             _fighter.Attack(_player);
             
@@ -111,6 +131,8 @@ namespace CastleEscape.Control
         }
         
         // Called from Unity
+        
+        /*
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
@@ -122,6 +144,8 @@ namespace CastleEscape.Control
             }
             
         }
+        
+        */
         
     }
 }

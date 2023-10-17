@@ -5,7 +5,7 @@ namespace CastleEscape.Stats
 {
     public class Experience : MonoBehaviour
     {
-        [SerializeField] private float level = 1;
+        [SerializeField] private int level = 1;
 
         public event Action OnExperienceGained;
         
@@ -15,7 +15,7 @@ namespace CastleEscape.Stats
             OnExperienceGained?.Invoke();
         }
     
-        public float GetLevel()
+        public int GetLevel()
         {
             return level;
         }

@@ -1,6 +1,7 @@
 using System;
 using CastleEscape.Attributes;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace CastleEscape.Movement
 {
@@ -14,15 +15,21 @@ namespace CastleEscape.Movement
         private Vector3 _movement;
         
         private Health _playerHealth;
+        private NavMeshAgent _playerNavMesh;
+        private Animator _characterAnimator;
 
         private void Awake()
         {
+            _playerNavMesh = GetComponent<NavMeshAgent>();
+            _characterAnimator = GetComponent<Animator>();
             _playerHealth = GetComponent<Health>();
+            
         }
 
         private void Update()
         {
             GetJoystickInputValues();
+            
         }
     
         private void FixedUpdate()
@@ -34,6 +41,7 @@ namespace CastleEscape.Movement
             
             SetMovement();
             SetRotation();
+            
         }
     
         private void GetJoystickInputValues()
@@ -58,6 +66,7 @@ namespace CastleEscape.Movement
         {
             return new Vector3(_movement.x,playerRigidbody.velocity.y,_movement.z)* movementSpeed * Time.fixedDeltaTime;
         }
+        
     
     }
 }
