@@ -116,7 +116,7 @@ Animator:
   m_GameObject: {fileID: 8957083429414178905}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 555dddb0fd62c1a4a8a87449606cff55, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4345d0e1e6c616448bbb54fab571c436, type: 2}
+  m_Controller: {fileID: 9100000, guid: cc32085e3acb2e340b8be16d4ab744ba, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -166,7 +166,10 @@ MonoBehaviour:
   patrolMovementSpeed: 2
   attackMovementSpeed: 5
   patrolPath: {fileID: 0}
+  alertStage: 0
   fieldOfView: 3
+  fieldOfViewAngle: 0
+  alertLevel: 0
 --- !u!114 &4479268341697084490
 MonoBehaviour:
   m_ObjectHideFlags: 0

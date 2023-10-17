@@ -24,7 +24,6 @@ namespace CastleEscape.Movement
         {
             _playerNavMesh.enabled = !_health.IsDead(); // will be edited after death check
             
-            //UpdateAnimator();
         }
         
         public void StartMoveAction(Vector3 destination)
@@ -45,22 +44,6 @@ namespace CastleEscape.Movement
             _playerNavMesh.isStopped = true;
         }
         
-        // Animation Velocity Equalized to NavMesh Velocity
-        // InverseTransformDirection turns Worldspace (Global) Velocity to Local Velocity relative to NavMesh Agent.
-        
-        /*
-        private void UpdateAnimator()
-        {
-            Vector3 characterVelocity = _playerNavMesh.velocity;
-            Vector3 localVelocity = transform.InverseTransformDirection(characterVelocity);
-            float speed = localVelocity.z;
-
-            _characterAnimator.SetFloat("ForwardSpeed", speed);
-            
-
-        }
-        
-        */
         
     }
 }
