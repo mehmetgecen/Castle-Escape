@@ -7,23 +7,20 @@ namespace CastleEscape.Movement
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField] private Transform childTransform;
         [SerializeField] private Rigidbody playerRigidbody;
         [SerializeField] private FixedJoystick fixedJoystick;
-        [SerializeField] Transform childTransform;
         [SerializeField] private float movementSpeed = 5f;
     
         private Vector3 _movement;
         
-        private Health _playerHealth;
-        private NavMeshAgent _playerNavMesh;
         private Animator _characterAnimator;
+        private Health _playerHealth;
 
         private void Awake()
         {
-            _playerNavMesh = GetComponent<NavMeshAgent>();
             _characterAnimator = GetComponent<Animator>();
             _playerHealth = GetComponent<Health>();
-            
         }
         
         private void Start()
@@ -34,7 +31,6 @@ namespace CastleEscape.Movement
         private void Update()
         {
             GetJoystickInputValues();
-            
         }
     
         private void FixedUpdate()
@@ -48,7 +44,6 @@ namespace CastleEscape.Movement
             SetRotation();
             UpdateAnimator();
             
-            print(GetVelocityVector());
         }
     
         private void GetJoystickInputValues()
@@ -83,9 +78,6 @@ namespace CastleEscape.Movement
 
             _characterAnimator.SetFloat("ForwardSpeed", speed);
             
-            print("Character Velocity: " + characterVelocity);
-            print("Speed: " + speed);
-
         }
         
     

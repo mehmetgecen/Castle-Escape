@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using CastleEscape.Attributes;
+using CastleEscape.Control;
 using CastleEscape.Stats;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace CastleEscape.Pickups
     public class PickUp : MonoBehaviour
     {
         [SerializeField] float spawnTime = 5f;
-
+        [SerializeField] private DoorController door;
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player"))
@@ -23,14 +24,13 @@ namespace CastleEscape.Pickups
             if (gameObject.CompareTag("Upgrader"))
             {
                 subject.GetComponent<Experience>().IncrementLevel();
+                
             }
             
-            // todo: add key to inventory
-            /*
             if (gameObject.CompareTag("Key"))
             {
-                subject.GetComponent<DoorKey>().HasKey = true;
-            }*/
+                door.playerHasKey = true;
+            }
             
             
             StartCoroutine(SpawnPickup(spawnTime));
